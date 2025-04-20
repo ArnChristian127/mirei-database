@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Europe",
+        "gmt": "GMT+1",
+        "data": "Europe/Paris"
+    },
+    {
+        "name": "North America",
+        "gmt": "GMT-5",
+        "data": "America/New_York"
+    },
+    {
+        "name": "Asia",
+        "gmt": "GMT+8",
+        "data": "Asia/Shanghai"
+    }
+]

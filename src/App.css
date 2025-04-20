@@ -1,0 +1,7 @@
+@import "tailwindcss";
+* {
+    font-family: "Roboto Condensed", sans-serif;
+}
+.hover-shadow:hover {
+    box-shadow: 0px 0px 15px rgb(158, 158, 248);
+}

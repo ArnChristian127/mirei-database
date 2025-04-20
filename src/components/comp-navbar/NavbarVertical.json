@@ -1,0 +1,30 @@
+[ 
+    {
+        "name": "Characters",
+        "url": "/assets/vertical-icon/characters_icon.png"
+    },
+    {
+        "name": "Weapon",
+        "url": "/assets/vertical-icon/weapons_icon.png"
+    },
+    {
+        "name": "Artifacts",
+        "url": "/assets/vertical-icon/artifacts_icon.png"
+    },
+    {
+        "name": "Builds",
+        "url": "/assets/vertical-icon/builds_icon.png"
+    },
+    {
+        "name": "Materials",
+        "url": "/assets/vertical-icon/materials_icon.png"
+    },
+    {
+        "name": "Food",
+        "url": "/assets/vertical-icon/food_icon.png"
+    },
+    {
+        "name": "Banners",
+        "url": "/assets/vertical-icon/banners_icon.png"
+    }
+]
