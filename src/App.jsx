@@ -3,11 +3,11 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import { useState, useEffect } from 'react';
 import { firestore } from './firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import Paimon from './assets/paimon.png';
 import NavbarHorizontal from './components/comp-navbar/NavbarHorizontal';
 import NavbarVertical from './components/comp-navbar/NavbarVertical';
 import Resetime from './components/comp-time/Resetime';
 import Timezone from './timezone.json';
+import Placeholder from './components/comp-placeholder/Placeholder';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './App.css';
@@ -30,10 +30,7 @@ export default function() {
     }, []);
     if (loading) {
         return (
-            <div className="h-screen flex items-center justify-center flex-col gap-2">
-                <img src={Paimon} className="w-full h-auto max-w-[100px]"/>
-                <h1 className="text-xl md:text-2xl lg:text-3xl text-blue-400 font-bold">Please wait a moment...</h1>
-            </div>
+            <Placeholder/>
         );
     }
     return (
