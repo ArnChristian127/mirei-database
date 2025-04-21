@@ -34,7 +34,7 @@ export function CurrentBanner() {
                     <div className="group" key={index}>
                         <div className="w-full rounded-lg bg-blue-900 group-hover:-translate-y-2 transform transition-transform duration-500 group:hover hover-shadow" key={index}>
                             <div className="overflow-hidden w-full">
-                                <img src={`${import.meta.env.BASE_URL}firebase/latest-banner/${items.id}.jpg`} className="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-lg"/>
+                                <img src={`${import.meta.env.BASE_URL}firebase/latest-banner/${items.id}.jpg`} className="w-full h-48 object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-lg inner-shadow"/>
                             </div>
                             <div className="p-3">
                                 <h1 className="font-bold text-xl">{items.name}</h1>
@@ -51,12 +51,27 @@ export function CurrentFarmable() {
     const dayList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [second_data, second_setData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const querySnapshot = await getDocs(collection(firestore, 'mirei_violet_court'));
                 const fetchedData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 setData(fetchedData);
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(firestore, 'mirei_forsaken_rift'));
+                const fetchedData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                second_setData(fetchedData);
             } catch (error) {
                 console.error("Error fetching data: ", error);
             } finally {
@@ -88,7 +103,20 @@ export function CurrentFarmable() {
                         <h1 className="text-3xl font-bold">Violet Court</h1>
                         <div className="flex items-center gap-13 flex-wrap">
                             {data.map((items, index) => (
-                                <div className="flex flex-col items-center max-w-[50px] justify-between">
+                                <div className="flex flex-col items-center max-w-[50px] justify-between" key={index}>
+                                    <img src={`${import.meta.env.BASE_URL}/firebase/character-icon/${items.name}.png`} className="w-full h-auto" alt={items.name}/>
+                                    <p className="font-bold text-sm text-center">{items.name}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className="bg-blue-900 px-6 py-3 rounded-lg min-h-[450px]">
+                    <div className="flex-col flex gap-5">
+                        <h1 className="text-3xl font-bold">Forsaken Rift</h1>
+                        <div className="flex items-center gap-13 flex-wrap">
+                            {second_data.map((items, index) => (
+                                <div className="flex flex-col items-center max-w-[50px] justify-between" key={index}>
                                     <img src={`${import.meta.env.BASE_URL}/firebase/character-icon/${items.name}.png`} className="w-full h-auto" alt={items.name}/>
                                     <p className="font-bold text-sm text-center">{items.name}</p>
                                 </div>
